@@ -10,9 +10,16 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
+/*
+type route 
+GET, POST, PUT , DELETE
+*/
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/articles',function(){
+	echo "ruta articulos";
 });
 
 /*
