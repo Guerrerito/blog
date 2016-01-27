@@ -14,13 +14,18 @@
 type route 
 GET, POST, PUT , DELETE
 */
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function(){
+	return view('test.index');
 });
 
-Route::get('/articles',function(){
-	echo "ruta articulos";
+Route::group(['prefix'=>'articles'], function(){
+	Route::get('view/{id?}',[
+			'uses'=>'TestController@view',
+			'as' => 'articlesView'
+		]);
+
 });
+Route::resource('/article','TestController');
 
 /*
 |--------------------------------------------------------------------------
