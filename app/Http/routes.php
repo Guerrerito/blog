@@ -26,6 +26,12 @@ Route::group(['prefix'=>'articles'], function(){
 
 });
 Route::resource('/article','TestController');
+/**/
+Route::group(['prefix'=>'admin'], function(){
+
+	Route::resource('users','UsersController');
+
+});
 
 /*
 |--------------------------------------------------------------------------
