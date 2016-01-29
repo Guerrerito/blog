@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use App\User;
+use Laracasts\Flash\Flash;
 
 class UsersController extends Controller
 {
@@ -17,7 +19,11 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        //dd("test");
+        $users = User::orderBy('id','ASC')->paginate(5);
+        
+        return view('admin.users.index')->with('users' , $users);
+
     }
 
     /**
@@ -43,7 +49,9 @@ class UsersController extends Controller
         $user->password= bcrypt($request->password);
         $user->save();
 
-        dd($user);
+        Session::Flash('guardando','Se ha registrado'.$user->name.' exitosamente.');
+
+        return redirect()->route('admin.users.index');
 
 
     }
@@ -90,6 +98,10 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        Flash::warning('El usuario ha sido eliminado.');
+        return redirect()->route('admin.users.index');
     }
 }

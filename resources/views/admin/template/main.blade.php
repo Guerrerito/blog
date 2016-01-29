@@ -6,9 +6,14 @@
 	<link rel="stylesheet" type="text/css" href="{{asset('plugins/bootstrap/css/bootstrap.css') }} ">
 </head>
 <body>
-		
+	@include('flash::message')
 	@include('admin.template.partials.nav')
 	<section>
+	
+		@if(Session::has('guardando'))
+			{{ Session::get('guardando') }}
+		@endif
+
 		@yield('content')
 	</section>
 

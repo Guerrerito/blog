@@ -160,6 +160,7 @@ return [
         */
         Collective\Html\HtmlServiceProvider::class,
         Cviebrock\EloquentSluggable\SluggableServiceProvider::Class,
+        Laracasts\Flash\FlashServiceProvider::Class,
 
     ],
 
@@ -211,6 +212,7 @@ return [
         */
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Flash' => Laracasts\Flash\Flash::Class,
 
     ],
 
