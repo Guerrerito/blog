@@ -19,7 +19,7 @@
 						<td>{{ $user->type}} </td>
 						<td>
 						<a href="{{ route('admin.users.destroy',$user->id) }}" class="btn btn-danger" onclick="return confirm('Seguro que deseas eliminar???')"></a>
-						<a href="	" class="btn btn-warning"></a>
+						<a href="{{ route('admin.users.edit',$user->id) }}	" class="btn btn-warning"></a>
 						</td>
 				</tr>
 

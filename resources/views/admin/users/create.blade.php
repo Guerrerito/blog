@@ -3,7 +3,19 @@
 @section('title','Crear Usuario')
 
 @section('content')
+	@if(count($errors)>0)
+		<div class="alert alert-danger" role="alert">
+		  
+		@foreach($errors->all() as $error)
+			<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			<span class="sr-only">Error:</span>
+			  {{ $error }}
+		
+		@endforeach
+		</div>
+	@endif
 	{!! Form::open(['route'=>'admin.users.store','method'=>'POST']) !!}
+
 		<div class="form-group">
 			{!! Form::label('name','Nombre') !!}
 			{!! Form::text('name', null, ['class'=>'form-control','placeholder'=>'Nombre Completo','required']) !!}
